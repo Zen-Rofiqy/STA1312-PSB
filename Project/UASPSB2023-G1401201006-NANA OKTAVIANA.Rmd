@@ -1,0 +1,423 @@
+---
+title: "UAS PSB"
+author: "Nana Oktaviana"
+date: "2023-06-13"
+output:
+  word_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(readxl)
+dt.ss <- read_excel("C:/Users/ASUS/Downloads/berita_palsu.xlsx",sheet=1)
+str(dt.ss)
+View(dt.ss)
+```
+
+```{r}
+##kategori "tidak" -> "1", "ya" -> "2"
+dt.ss$tanda_seru_judul_artikel[dt.ss$tanda_seru_judul_artikel=="tidak"] <- 1
+dt.ss$tanda_seru_judul_artikel[dt.ss$tanda_seru_judul_artikel=="ya"] <- 2
+dt.ss$tanda_seru_judul_artikel <- as.factor(dt.ss$tanda_seru_judul_artikel)
+##kategori "palsu" -> "1", "asli" -> "2"
+dt.ss$tipe_berita[dt.ss$tipe_berita=="palsu"] <- 1
+dt.ss$tipe_berita[dt.ss$tipe_berita=="asli"] <- 2
+dt.ss$tipe_berita <- as.factor(dt.ss$tipe_berita)
+str(dt.ss)
+View(dt.ss)
+```
+
+# A. Eksplorasi Data
+```{r}
+library(DataExplorer)
+plot_intro(data = dt.ss)
+```
+Pengecekan proporsi tipe data dan _missing value_ menunjukkan bahwa data yang digunakan merupakan data lengkap karena jumlah baris dan kolom berjumlah 100%. Tipe data pada kasus ini yaitu diskrit dan kontinu. Selain itu, data yang digunakan tidak terdeteksi _missing value_ atau data hilang.
+
+```{r}
+library(corrplot)
+korel<-cor(dt.ss[,-c(2,4)])
+corrplot(korel, type ="upper", method="number")
+```
+
+```{r}
+# Scatter plot: kata_dalam_artikel vs. persen_negatif
+plot(dt.ss$kata_dalam_artikel, dt.ss$persen_negatif, xlab = "kata_dalam_artikel", ylab = "persen_negatif", main = "Scatter Plot")
+
+```
+
+```{r}
+# Box plot: tipe_berita vs. persen_negatif
+boxplot(dt.ss$persen_negatif ~ dt.ss$tipe_berita, xlab = "tipe_berita", ylab = "persen_negatif", main = "Box Plot")
+```
+
+```{r}
+# Uji Chi-Square
+chisq.test(dt.ss$tipe_berita, dt.ss$tanda_seru_judul_artikel)
+```
+Berdasarkan hasil uji Chi-Square ini, kita dapat menyimpulkan bahwa terdapat hubungan yang signifikan antara variabel kategorikal `tipe_berita` dan `tanda_seru_judul_artikel`
+
+#B. Pembagian data
+```{r}
+library(caret)
+set.seed(123)
+
+# Bagi data menjadi data train (80%) dan data test (20%)
+train_indices <- createDataPartition(dt.ss$tipe_berita, p = 0.8, list = FALSE)
+train_data <- dt.ss[train_indices, ]
+test_data <- dt.ss[-train_indices, ]
+```
+
+#C. Model Naive Bayes
+```{r}
+library(e1071)
+
+# Model nb1: tipe_berita ~ tanda_seru_judul_artikel
+model_nb1 <- naiveBayes(tipe_berita ~ tanda_seru_judul_artikel, data = train_data)
+summary(model_nb1)
+model_nb1
+summary(model_nb1)
+```
+
+```{r}
+# Model nb2: tipe_berita ~ kata_dalam_artikel
+model_nb2 <- naiveBayes(tipe_berita ~ kata_dalam_artikel, data = train_data)
+model_nb2
+summary(model_nb2)
+```
+
+```{r}
+# Model nb3: tipe_berita ~ kata_dalam_artikel + persen_negatif
+model_nb3 <- naiveBayes(tipe_berita ~ kata_dalam_artikel + persen_negatif, data = train_data)
+model_nb3
+summary(model_nb3)
+```
+
+```{r}
+# Model nb4: tipe_berita ~ kata_dalam_artikel + persen_negatif + tanda_seru_judul_artikel
+model_nb4 <- naiveBayes(tipe_berita ~ kata_dalam_artikel + persen_negatif + tanda_seru_judul_artikel, data = train_data)
+model_nb4
+summary(model_nb4)
+```
+
+#D. Prior
+1. Hitung jumlah kemunculan kelas "1" dalam data train
+2. Hitung jumlah kemunculan kelas "2" dalam data train
+3. Hitung total jumlah observasi dalam data train
+4. Hitung peluang prior untuk masing-masing kelas
+prior_class1 <- count_class1 / total_count = 48/120 = 0.4
+prior_class2 <- count_class2 / total_count = 72/120 = 0.6
+
+#E. Asumsi sebaran P(x|y)
+Berdasarkan output yang Anda berikan, asumsi yang digunakan untuk sebaran P(x|y) pada model_nb3 adalah sebagai berikut:
+
+Untuk peubah prediktor "kata_dalam_artikel":
+
+- P(x=kata_dalam_artikel|y=1) adalah distribusi Normal dengan rata-rata 455.1250 dan deviasi standar 296.8904.
+- P(x=kata_dalam_artikel|y=2) adalah distribusi Normal dengan rata-rata 604.8889 dan deviasi standar 786.7288.
+
+Untuk peubah prediktor "persen_negatif":
+
+- P(x=persen_negatif|y=1) adalah distribusi Normal dengan rata-rata 3.515833 dan deviasi standar 1.473854.
+- P(x=persen_negatif|y=2) adalah distribusi Normal dengan rata-rata 2.670000 dan deviasi standar 1.120620.
+
+Dalam Naive Bayes Classifier, asumsi yang umum digunakan adalah asumsi bahwa peubah prediktor terdistribusi secara independen, tetapi dalam kasus ini, terlihat bahwa distribusi yang digunakan adalah distribusi Normal (Gaussian) untuk masing-masing peubah prediktor.
+
+Alasan di balik penggunaan asumsi distribusi Normal adalah karena Naive Bayes Classifier untuk prediktor diskrit ini menggunakan model distribusi Normal untuk memodelkan hubungan antara peubah prediktor dan peubah respon. Meskipun asumsi distribusi Normal ini sering digunakan, penting untuk memastikan bahwa asumsi ini sesuai dengan karakteristik data yang digunakan dan konteks masalah yang spesifik.
+
+# F. Syntax
+```{r}
+# Membuat model_nb3 dengan asumsi distribusi Normal
+model_nb3 <- naiveBayes(tipe_berita ~ kata_dalam_artikel + persen_negatif, data = train_data, distribution = "gaussian")
+model_nb3
+
+# Menampilkan ringkasan model
+summary(model_nb3)
+
+```
+# G. Model Regresi Logistik
+```{r}
+# Model rl1: tipe_berita ~ tanda_seru_judul_artikel
+model_rl1 <- glm(tipe_berita ~ tanda_seru_judul_artikel, data = train_data, family = "binomial")
+summary(model_rl1)
+```
+
+```{r}
+# Model rl2: tipe_berita ~ kata_dalam_artikel
+model_rl2 <- glm(tipe_berita ~ kata_dalam_artikel, data = train_data, family = "binomial")
+summary(model_rl2)
+
+```
+
+```{r}
+# Model rl3: tipe_berita ~ kata_dalam_artikel + persen_negatif
+model_rl3 <- glm(tipe_berita ~ kata_dalam_artikel + persen_negatif, data = train_data, family = "binomial")
+summary(model_rl3)
+```
+
+```{r}
+# Model rl4: tipe_berita ~ kata_dalam_artikel + persen_negatif + tanda_seru_judul_artikel
+model_rl4 <- glm(tipe_berita ~ kata_dalam_artikel + persen_negatif + tanda_seru_judul_artikel, data = train_data, family = "binomial")
+summary(model_rl4)
+```
+
+# H. Asumsi Sebaran Prior
+
+Berdasarkan model regresi logistik (model_rl4) yang telah dibuat, asumsi sebaran prior yang umum digunakan untuk intercept dan koefisien adalah sebagai berikut:
+
+Asumsi sebaran prior untuk Intercept:
+
+Intercept pada model regresi logistik biasanya diasumsikan memiliki sebaran prior yang terdistribusi secara Normal (Gaussian) dengan mean 0 dan varian yang cukup besar.
+Asumsi sebaran prior untuk Koefisien (beta) pada peubah prediktor:
+
+Koefisien pada model regresi logistik juga diasumsikan memiliki sebaran prior yang terdistribusi secara Normal dengan mean 0 dan varian yang cukup besar.
+Asumsi ini dipilih karena sebaran prior yang simetris di sekitar 0 memberikan fleksibilitas yang cukup besar pada model, memungkinkan model untuk menyesuaikan diri terhadap data yang diberikan.
+
+# I. Syntax
+
+```{r}
+# Mengatur prior untuk intercept
+prior_intercept <- 0  # Mean = 0
+
+```
+
+# J. Sensitivitas dan Spesifisitas
+
+```{r}
+
+# Menggunakan model_nb3 dengan data test
+probabilities_nb3 <- predict(model_nb3, newdata = test_data, type = "class")
+
+```
+
+```{r}
+# Prediksi menggunakan model_rl3 dengan data test
+probabilities_rl3 <- predict(model_rl3, newdata = test_data, type = "response")
+predictions_rl3 <- ifelse(probabilities_rl3 >= 0.5, "1", "2")
+
+```
+
+```{r}
+# Definisikan fungsi untuk menghitung sensitivitas dan spesifisitas
+calculate_sensitivity_specificity <- function(actual, predicted) {
+  tp <- sum(actual == "1" & predicted == "1")  # True Positive
+  tn <- sum(actual == "2" & predicted == "2")  # True Negative
+  fp <- sum(actual == "2" & predicted == "1")  # False Positive
+  fn <- sum(actual == "1" & predicted == "2")  # False Negative
+  
+  sensitivity <- tp / (tp + fn)  # Sensitivitas (True Positive Rate)
+  specificity <- tn / (tn + fp)  # Spesifisitas (True Negative Rate)
+  
+  return(list(sensitivity = sensitivity, specificity = specificity))
+}
+
+
+
+```
+
+```{r}
+# Menghitung sensitivitas dan spesifisitas untuk model_nb3 dengan cut-off 0.5, 0.6, dan 0.7
+cutoffs <- c(0.5, 0.6, 0.7)  # Nilai cut-off peluang yang ingin digunakan
+results_nb3 <- lapply(cutoffs, function(cutoff) {
+  predictions <- ifelse(as.numeric(probabilities_nb3) >= cutoff, "1", "2")
+  calculate_sensitivity_specificity(as.character(test_data$tipe_berita), predictions)
+})
+results_nb3
+```
+
+```{r}
+# Menghitung sensitivitas dan spesifisitas untuk model_rl3 dengan cut-off 0.5, 0.6, dan 0.7
+results_rl3 <- lapply(cutoffs, function(cutoff) {
+  predictions <- ifelse(probabilities_rl3 >= cutoff, "1", "2")
+  calculate_sensitivity_specificity(test_data$tipe_berita, predictions)
+})
+results_rl3
+```
+# J. Kombinasi Model Terbaik
+Berdasarkan hasil di atas, tidak ada kombinasi model dan cut-off yang secara konsisten memiliki sensitivitas dan spesifisitas yang tinggi. Namun, jika kita lebih mengutamakan spesifisitas untuk memastikan bahwa artikel berita yang terdeteksi palsu adalah benar-benar palsu, maka kombinasi model_rl3 dengan cut-off 0.7 dapat menjadi pilihan terbaik.
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
