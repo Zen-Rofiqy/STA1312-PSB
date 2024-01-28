@@ -11,7 +11,7 @@ output:
     highlight: tango
     code_folding: show
     toc_depth: 3
-    number_sections: true
+    number_sections: false
     toc_float:
       collapsed: true
       smooth_scroll: true
@@ -63,3 +63,13 @@ path <- function(){
 > -   `B4` : Restoran rating bintang 4 di OKfood
 >
 > -   `Bk` : Restoran rating bintang kurang dari 4 di OKfood
+
+> **Diketahui**
+>
+> -   $P(D)=0.7$
+>
+> -   $P(B_5|D)=0.2$
+>
+> -   $P(B_4|D)=0.5$
+>
+> -   $P(B_k|D)=0.3$
