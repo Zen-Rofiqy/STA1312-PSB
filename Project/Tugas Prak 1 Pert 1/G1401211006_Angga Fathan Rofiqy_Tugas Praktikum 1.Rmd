@@ -43,6 +43,22 @@ install_load <- function (package1, ...)  {
 }
 
 install_load("DT","dplyr","ggplot2")
+
+theme1.1 <- list(
+  geom_hline(yintercept = 0, size = 1, colour="#333333"),
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, 
+                                   margin = margin(b = 10, t=-20)),
+        axis.text.y = element_text(vjust = 0.5, face = "bold", 
+                                   margin = margin(l = 20, r = 0)),
+        plot.title = element_text(hjust = 0.5, face = "bold"),
+        text = element_text(size = 30),
+        plot.subtitle = element_text(hjust = 0.5),
+        panel.background = element_rect(fill = 'transparent'),
+        plot.background = element_rect(fill='transparent', color=NA),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank()
+        ) 
+)
 ```
 
 # No 1
@@ -149,12 +165,12 @@ bayes.box %>% datatable %>%
 
 ## Poin c
 
-```{r}
+```{r dpi=300, fig.height = 14, fig.width = 20, fig.align = "center", message = FALSE, warning=FALSE}
 
 ggplot(bayes.box[,c(1,5)], aes(x=factor(mu), y=post)) +
-  geom_bar(stat="identity", fill="skyblue") +
-  xlab("Nilai µ") +
-  ylab("Peluang Posterior") +
-  ggtitle("Distribusi Posterior untuk Y = 2") +
-  theme_classic()
+  geom_bar(stat="identity", col=NA,
+           fill= ifelse(bayes.box[,c(1,5)]$mu == 2,  "#1380A1", "#dddddd")) +
+  labs(x = "\nNilai µ", y = "Peluang Posterior", 
+       title = "\nDistribusi Posterior untuk Y = 2\n") +
+  theme1.1
 ```
