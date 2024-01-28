@@ -90,4 +90,8 @@ Dimana, $\begin{equation}\begin{aligned} P(Bk) &= P(Bk|D) \times P(D) \text{ } +
 
 Bisa dilihat bahwa **informasi tambahan** yang diperlukan apabila kita ingin mencari nilai $P(D|Bk)$ (Peluang Dena menyukai resto rating kurang dari 4) **adalah** $P(Bk|D^c)$ (**Persentase resto rating kurang dari 4 yang tidak disukai Dena**).
 
+```         
+`r text_spec(TEXT, color = "red")`
+```
+
 # No 2
