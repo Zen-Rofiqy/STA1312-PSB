@@ -9,7 +9,7 @@ output:
     lightbox: true
     gallery: true
     highlight: tango
-    code_folding: hide
+    code_folding: show
     toc_depth: 3
     number_sections: true
     toc_float:
@@ -20,9 +20,7 @@ pkgdown:
   as_is: true
 ---
 
-Kode di `Hide` dalam *default*, untuk menampilkan kode, klik `Code`.
-
-```{r, warning=FALSE, message = FALSE}
+```{r message=FALSE, warning=FALSE, include=FALSE}
 #                      -=( Install & Load Package Function )=-
 install_load <- function (package1, ...)  {   
 
