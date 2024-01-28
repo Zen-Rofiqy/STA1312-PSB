@@ -42,12 +42,7 @@ install_load <- function (package1, ...)  {
    } 
 }
 
-#Path Function
-path <- function(){
-  gsub  ( "\\\\",  "/",  readClipboard ()  )
-}
-#Copy path, Panggil function di console
-#Copy r path, paste ke var yang diinginkan
+install_load("DT","dplyr")
 ```
 
 # No 1
@@ -110,13 +105,37 @@ $$
 
 > <mark style="background-color: #b6f2b6">Tabel bayes box</mark>
 
-|   𝜇   | Prior | Likelihood | Prior x Likelihood | Posterior |
-|:-----:|:-----:|------------|--------------------|-----------|
-|   1   |  1/5  | 0.1839     | 0.0368             | 0.2023    |
-|   2   |  1/5  | 0.2707     | 0.0541             | 0.2976    |
-|   3   |  1/5  | 0.2240     | 0.0448             | 0.2464    |
-|   4   |  1/5  | 0.1465     | 0.0293             | 0.1611    |
-|   5   |  1/5  | 0.0842     | 0.0168             | 0.0926    |
-| Total |       |            | 0.1819             |           |
+| $\mu$ | Prior | Likelihood | Prior $\times$ Likelihood | Posterior |
+|:-----:|:-----:|------------|---------------------------|-----------|
+|   1   |  1/5  | 0.1839     | 0.0368                    | 0.2023    |
+|   2   |  1/5  | 0.2707     | 0.0541                    | 0.2976    |
+|   3   |  1/5  | 0.2240     | 0.0448                    | 0.2464    |
+|   4   |  1/5  | 0.1465     | 0.0293                    | 0.1611    |
+|   5   |  1/5  | 0.0842     | 0.0168                    | 0.0926    |
+| Total |       |            | 0.1819                    |           |
 
 ## Poin b
+
+```{r}
+# Nilai 𝜇 yang mungkin
+mu <- c(1,2,3,4,5)
+
+# Prior untuk setiap nilai 𝜇
+pri <- rep(1/length(mu), length(mu))
+
+# Dirstribusi Poisson
+pois.llh <- function(k, mu) return(dpois(k, mu))
+
+# Menghitung likelihood untuk Y=2 untuk setiap nilai 𝜇
+k <- 2
+llh <- sapply(mu, pois.llh, k=k)
+
+# Menghitung Prior x likelihood
+pri.llh <- llh * pri
+
+# Menghitung Posterior
+post <- pri.llh / sum(pri.llh)
+
+datatable( data.frame( mu, pri, llh, pri.llh, post ) ) %>% 
+  formatRound(c('llh', 'pri.llh', 'post'), digits = 4)
+```
