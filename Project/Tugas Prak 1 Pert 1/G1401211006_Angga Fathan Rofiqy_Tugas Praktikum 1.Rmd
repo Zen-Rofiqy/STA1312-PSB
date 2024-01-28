@@ -42,7 +42,7 @@ install_load <- function (package1, ...)  {
    } 
 }
 
-install_load("DT","dplyr")
+install_load("DT","dplyr","ggplot2")
 ```
 
 # No 1
@@ -142,6 +142,19 @@ post.dist <- function(k, mu, w){
 }
 
 bayes.box <- post.dist(k, mu, w) 
+colnames(bayes.box) <- c("mu", "Prior", "Likelihood", "Prior x Likelihood", "Posterior")
 bayes.box %>% datatable %>% 
-  formatRound(c('llh', 'pri.llh', 'post'), digits = 4)
+  formatRound(c(3,4,5), digits = 4)
+```
+
+## Poin c
+
+```{r}
+
+ggplot(bayes.box[,c(1,5)], aes(x=factor(mu), y=post)) +
+  geom_bar(stat="identity", fill="skyblue") +
+  xlab("Nilai µ") +
+  ylab("Peluang Posterior") +
+  ggtitle("Distribusi Posterior untuk Y = 2") +
+  theme_classic()
 ```
