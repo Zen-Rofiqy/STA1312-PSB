@@ -93,3 +93,17 @@ Bisa dilihat bahwa <mark style="background-color: #b6f2b6">informasi tambahan</m
 # No 2
 
 ![](images/clipboard-291666876.png){width="577"}
+
+## Poin a
+
+Likelihood sebaran Poisson dengan $Y=2$ :
+
+$$
+P(Y=2|\mu)=\frac{e^{-\mu}\mu^2}{2!} \text{ , } \mu=1,2,3,4,5
+$$
+
+Karena setiap nilai memiliki bobot yang sama, maka untuk setiap $\mu$ prior nya sama. Sehingga :
+
+$$
+P(Y=2)=\frac{1}{5} \text{ , }  \mu=1,2,3,4,5
+$$
