@@ -53,3 +53,13 @@ path <- function(){
 # No 1
 
 ![](images/clipboard-1509227410.png){width="619"}
+
+> **Misalkan**
+>
+> -   `D` : Dena menyukai sebuah restoran
+>
+> -   `B5` : Restoran rating bintang 5 di OKfood
+>
+> -   `B4` : Restoran rating bintang 4 di OKfood
+>
+> -   `Bk` : Restoran rating bintang kurang dari 4 di OKfood
