@@ -87,3 +87,5 @@ Maka,
 $P(D|Bk) = \frac{P(Bk|D) \times P(D)} {P(Bk)} = \frac{0.3 \times 0.7} {P(Bk)}$
 
 Dimana, $\begin{equation}\begin{aligned} P(Bk) &= P(Bk|D) \times P(D) \text{ } + \text{ } P(Bk|D^c) \times P(D^c) \\ &= (0.3 \times 0.7) \text{ } + \text{ } P(Bk|D^c) \times 0.3 \end{aligned}\end{equation}$
+
+Bisa dilihat bahwa informasi tambahan yang diperlukan apabila kita ingin mencari nilai $P(D|Bk)$ (Peluang Dena menyukai resto rating kurang dari 4) adalah $P(Bk|D^c)$ (Persentase resto rating kurang dari 4 yang tidak disukai Dena).
