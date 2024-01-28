@@ -49,3 +49,7 @@ path <- function(){
 #Copy path, Panggil function di console
 #Copy r path, paste ke var yang diinginkan
 ```
+
+# No 1
+
+![](images/clipboard-1509227410.png){width="619"}
