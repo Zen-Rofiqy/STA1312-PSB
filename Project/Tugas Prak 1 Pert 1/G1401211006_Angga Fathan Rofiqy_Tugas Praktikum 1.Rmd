@@ -119,23 +119,29 @@ $$
 ```{r}
 # Nilai 𝜇 yang mungkin
 mu <- c(1,2,3,4,5)
+k <- 2 # Y=2
+w <- 0 # Bobot nya sama
 
-# Prior untuk setiap nilai 𝜇
-pri <- rep(1/length(mu), length(mu))
-
-# Dirstribusi Poisson
+# Sebaran Poisson
 pois.llh <- function(k, mu) return(dpois(k, mu))
 
-# Menghitung likelihood untuk Y=2 untuk setiap nilai 𝜇
-k <- 2
-llh <- sapply(mu, pois.llh, k=k)
+post.dist <- function(k, mu, w){
+  # Prior untuk setiap nilai 𝜇
+  pri <- ifelse(w == 0, rep(1/length(mu), length(mu)), w)
+  
+  # Menghitung likelihood untuk Y=2 untuk setiap nilai 𝜇
+  llh <- sapply(mu, pois.llh, k=k)
+  
+  # Menghitung Prior x likelihood
+  pri.llh <- llh * pri
+  
+  # Menghitung Posterior
+  post <- pri.llh / sum(pri.llh) 
+  
+  data.frame( mu, pri, llh, pri.llh, post ) %>% return()
+}
 
-# Menghitung Prior x likelihood
-pri.llh <- llh * pri
-
-# Menghitung Posterior
-post <- pri.llh / sum(pri.llh)
-
-datatable( data.frame( mu, pri, llh, pri.llh, post ) ) %>% 
+bayes.box <- post.dist(k, mu, w) 
+bayes.box %>% datatable %>% 
   formatRound(c('llh', 'pri.llh', 'post'), digits = 4)
 ```
