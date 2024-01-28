@@ -80,8 +80,10 @@ path <- function(){
 
 Menggunakan **rumus bayes,**
 
-$P(B_j|A) = \frac{P(B_k|D) \times P(D)} {P(B_K)}$
+$P(B_j|A) = \frac{P(A|B_j) \times P(B_j)} {P(A)}$, dimana $P(A)=\sum^k_{i=1} P(A|B_i) \times P(B_i)$
 
-$P(D|Bk) = \frac{P(Bk|D) \times P(D)} {P(BK)} = \frac{0.3 \times 0.7} {P(Bk)}$
+Maka,
 
-Dimana, $P(B_K)=$
+$P(D|Bk) = \frac{P(Bk|D) \times P(D)} {P(Bk)} = \frac{0.3 \times 0.7} {P(Bk)}$
+
+Dimana, $\begin{equation}\begin{aligned} P(Bk) &= P(Bk|D) \times P(D) \text{ } + \text{ } P(Bk|D^c) \times P(D^c) \\ &= (0.3 \times 0.7) \text{ } + \text{ } P(Bk|D^c) \times 0.3 \end{aligned}\end{equation}$
