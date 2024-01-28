@@ -105,5 +105,16 @@ $$
 Karena setiap nilai memiliki bobot yang sama, maka untuk setiap $\mu$ prior nya sama. Sehingga :
 
 $$
-P(Y=2)=\frac{1}{5} \text{ , }  \mu=1,2,3,4,5
+P(Y=2)=\frac{1}{5} \text{ , } \mu
 $$
+
+|   𝜇   | Prior | Likelihood | Prior x Likelihood | Posterior |
+|:-----:|:-----:|------------|--------------------|-----------|
+|   1   |  1/5  | 0.1839     | 0.0368             | 0.2023    |
+|   2   |  1/5  | 0.2707     | 0.0541             | 0.2976    |
+|   3   |  1/5  | 0.2240     | 0.0448             | 0.2464    |
+|   4   |  1/5  | 0.1465     | 0.0293             | 0.1611    |
+|   5   |  1/5  | 0.0842     | 0.0168             | 0.0926    |
+| Total |       |            | 0.1819             |           |
+
+## Poin b
