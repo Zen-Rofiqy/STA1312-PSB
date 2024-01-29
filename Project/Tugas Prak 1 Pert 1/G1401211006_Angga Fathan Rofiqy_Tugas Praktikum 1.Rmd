@@ -247,5 +247,11 @@ do.call("grid.arrange", c(chart, ncol=2))
 
 Dari chart di atas, terlihat bahwa nilai $Y$ dan $\theta$ memperngaruhi sebaran posterior, yaitu:
 
--   Ketika <mark style="background-color: #b6f2b6">nilai $Y$ kecil</mark>, misalkan saat $Y=0$, sebaran posterior cenderung berepusat di nilai <mark style="background-color: #b6f2b6">n yang lebih kecil</mark>. \
-    Hal ini menunjukkan <mark style="background-color: #b6f2b6">jika sangat sedikit pelanggan yang membel`i</mark>`{=html} ($Y$), kemungkinan banyaknya <mark style="background-color: #b6f2b6">pelanggan yang dateng ke toko pada hasi diskon juga akan sediki`t</mark>`{=html}.
+-   Ketika <mark style="background-color: #b6f2b6">nilai $Y$ **kecil**</mark>, misalkan saat $Y=0$, sebaran posterior cenderung berepusat di nilai <mark style="background-color: #b6f2b6"> $n$ yang **lebih kecil**</mark>. \
+    Hal ini menunjukkan <mark style="background-color: #b6f2b6">jika **sangat sedikit** pelanggan yang membel`i</mark>`{=html} ($Y$), kemungkinan banyaknya <mark style="background-color: #b6f2b6">pelanggan yang dateng ke toko pada hari diskon ($n$) juga **akan sediki**`t</mark>`{=html}.
+
+-   Sebaliknya, ketika <mark style="background-color: #b6f2b6">nilai $Y$ **besar**</mark>, sebaran posterior cenderung berpusat di nilai <mark style="background-color: #b6f2b6"> $n$ yang **lebih besar**</mark>. Ini berarti <mark style="background-color: #b6f2b6">jika **banyak** pelanggan yang membeli</mark> ($Y$), kemungkinan banyaknya <mark style="background-color: #b6f2b6">pelanggan yang dateng ke toko pada hari diskon ($n$) juga **akan lebih banyak**</mark>.
+
+-   Sementara nilai $\theta$ yang lebih besar, misalkan saat $\theta=0.5$ cenderung membuat nilai $n$ yang lebih besar dibandingkan saat $\theta=0.2$. Hal ini menunjukkan saat peluang untuk membeli jika pelanggan dateng ke toko ($\theta$) lebih tinggi, sebaran posterior akan menunjukkan peluang yang lebih tinggi untuk nilai n.
+
+Sehingga dapat disimpulkan bahwa banyaknya pelanggan yang membeli ($Y$) dan peluang untuk membeli jika pelanggan dateng ke toko ($\theta$) memberikan informasi penting terkait banyaknya pelanggan yang dateng ke toko pada hari diskon yang tercermin dalam sebaran posterior dari $n$.
