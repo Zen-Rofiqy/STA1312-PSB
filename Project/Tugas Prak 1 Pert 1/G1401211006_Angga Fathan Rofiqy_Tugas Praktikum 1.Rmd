@@ -63,6 +63,12 @@ theme1.1 <- list(
 
 > -   <mark style="background-color: #91CCDB">**Code/Syntax :** [File.rmd](https://github.com/Zen-Rofiqy/STA1312-PSB/blob/main/Project/Tugas%20Prak%201%20Pert%201/G1401211006_Angga-Fathan-Rofiqy_Tugas-Praktikum-1.Rmd) </mark>
 
+# Tulis Tangan
+
+![](images/WhatsApp Image 2024-01-29 at 17.12.56_51a5adfb.jpg)
+
+Maaf tulisannya jelek 🙏. Tapi tenang, dibawah di ketik dengan rapih kok 👍.
+
 # No 1
 
 ![](images/clipboard-1509227410.png){width="619"}
@@ -254,6 +260,6 @@ Dari chart di atas, terlihat bahwa nilai $Y$ dan $\theta$ memperngaruhi sebaran 
 
 -   Sebaliknya, ketika <mark style="background-color: #b6f2b6">nilai $Y$ **besar**</mark>, sebaran posterior cenderung berpusat di nilai <mark style="background-color: #b6f2b6"> $n$ yang **lebih besar**</mark>. Ini berarti <mark style="background-color: #b6f2b6">jika **banyak** pelanggan yang membeli</mark> ($Y$), kemungkinan banyaknya <mark style="background-color: #b6f2b6">pelanggan yang dateng ke toko pada hari diskon ($n$) juga **akan lebih banyak**</mark>.
 
--   Sementara <mark style="background-color: #b6f2b6">nilai $\theta$ yang **lebih besar**</mark>, misalkan saat $\theta=0.5$ cenderung membuat <mark style="background-color: #b6f2b6">nilai $n$ yang **lebih besar**</mark> dibandingkan saat $\theta=0.2$. Hal ini menunjukkan saat <mark style="background-color: #b6f2b6">peluang untuk membeli jika pelanggan dateng ke toko ($\theta$) **lebih tinggi**, sebaran posterior akan menunjukkan peluang yang **lebih tinggi** untuk nilai n.</mark>
+-   Sementara <mark style="background-color: #b6f2b6">nilai $\theta$ yang **lebih besar**</mark>, misalkan saat $\theta=0.5$ cenderung membuat <mark style="background-color: #b6f2b6">nilai $n$ yang **lebih kecil**</mark> dibandingkan saat $\theta=0.2$. Hal ini menunjukkan saat <mark style="background-color: #b6f2b6">peluang untuk membeli jika pelanggan dateng ke toko ($\theta$) **lebih tinggi**, sebaran posterior akan menunjukkan peluang yang **lebih kecil** untuk nilai $n$.</mark>
 
 Sehingga dapat disimpulkan bahwa banyaknya pelanggan yang membeli ($Y$) dan peluang untuk membeli jika pelanggan dateng ke toko ($\theta$) memberikan **informasi penting** terkait banyaknya pelanggan yang dateng ke toko pada hari diskon yang tercermin dalam sebaran posterior dari $n$.
