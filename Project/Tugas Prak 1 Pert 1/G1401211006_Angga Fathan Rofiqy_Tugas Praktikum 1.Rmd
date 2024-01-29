@@ -227,8 +227,8 @@ post.plot <- function(Y.val, theta.val, n.val, lamb.pois){
       bar.max <- which(df$post == max(df$post))
       chart <- ggplot(df, aes(x=n, y=post)) +
         geom_bar(stat="identity", col=NA,
-                 fill= ifelse(df$n %in% bar.max,  "#1380A1", "#dddddd")) +
-        labs(x = "\nn", y = "Peluang Posterior", 
+                 fill= ifelse(df$n %in% (bar.max-1),  "#1380A1", "#dddddd")) +
+        labs(x = "\nn", y = "\nPeluang Posterior", 
              title = paste0("\nSebaran Posterior n (Y=",y, ", \u03b8=", theta, ")")) +
         theme1.1
       plot.list[[paste0("Y=", y, "\u03b8=", theta)]] <- chart
