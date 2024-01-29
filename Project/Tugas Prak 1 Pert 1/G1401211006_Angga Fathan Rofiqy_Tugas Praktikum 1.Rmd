@@ -165,12 +165,32 @@ bayes.box %>% datatable %>%
 
 ## Poin c
 
-```{r dpi=300, fig.height = 14, fig.width = 20, fig.align = "center", message = FALSE, warning=FALSE}
+```{r dpi=300, fig.height = 14, fig.width = 20, message = FALSE, warning=FALSE}
 
-ggplot(bayes.box[,c(1,5)], aes(x=factor(mu), y=post)) +
+ggplot(bayes.box[,c(1,5)], aes(x=factor(mu), y=Posterior)) +
   geom_bar(stat="identity", col=NA,
            fill= ifelse(bayes.box[,c(1,5)]$mu == 2,  "#1380A1", "#dddddd")) +
   labs(x = "\nNilai µ", y = "Peluang Posterior", 
-       title = "\nDistribusi Posterior untuk Y = 2\n") +
+       title = "\nSebaran Posterior untuk Y = 2\n") +
   theme1.1
+```
+
+# No 3
+
+![](images/clipboard-4241501886.png){width="632"}
+
+> **Diketahui**
+>
+> -   `n` : banyaknya pelanggaan yang dateng ke toko pas hari diskon, $n \sim Poisson(5)$
+>
+> -   `Y` : jumlah pelanggan yang beli, $Y|n \sim Binomial(n, \theta)$, dimana $Y \in \{0,5,10\}$
+>
+> -   $\theta$ : peluang beli jika pelanggan dateng ke toko, $\theta \in \{0.2,0.5\}$
+
+## Penyelesaian
+
+Sebaran posterior dihitung untuk setiap kombinasi $Y$ dan $\theta$, yakni $\binom{4}{2}=6$, sehingga akan ada **6 grafik**.
+
+```{r}
+# Fungsi 
 ```
