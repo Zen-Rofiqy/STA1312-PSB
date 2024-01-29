@@ -244,3 +244,8 @@ lamb.pois <- 5
 chart <- post.plot(Y.val, theta.val, n.val, lamb.pois)
 do.call("grid.arrange", c(chart, ncol=2))
 ```
+
+Dari chart di atas, terlihat bahwa nilai $Y$ dan $\theta$ memperngaruhi sebaran posterior, yaitu:
+
+-   Ketika <mark style="background-color: #b6f2b6">nilai $Y$ kecil</mark>, misalkan saat $Y=0$, sebaran posterior cenderung berepusat di nilai <mark style="background-color: #b6f2b6">n yang lebih kecil</mark>. \
+    Hal ini menunjukkan <mark style="background-color: #b6f2b6">jika sangat sedikit pelanggan yang membel`i</mark>`{=html} ($Y$), kemungkinan banyaknya <mark style="background-color: #b6f2b6">pelanggan yang dateng ke toko pada hasi diskon juga akan sediki`t</mark>`{=html}.
