@@ -42,7 +42,7 @@ install_load <- function (package1, ...)  {
    } 
 }
 
-install_load("DT","dplyr","ggplot2")
+install_load("DT","dplyr","ggplot2","gridExtra")
 
 theme1.1 <- list(
   geom_hline(yintercept = 0, size = 1, colour="#333333"),
@@ -191,6 +191,56 @@ ggplot(bayes.box[,c(1,5)], aes(x=factor(mu), y=Posterior)) +
 
 Sebaran posterior dihitung untuk setiap kombinasi $Y$ dan $\theta$, yakni $\binom{4}{2}=6$, sehingga akan ada **6 grafik**.
 
-```{r}
-# Fungsi 
+```{r dpi=300, fig.height = 28, fig.width = 40, message = FALSE, warning=FALSE}
+# Fungsi untuk menghitung distribusi posterior dari n
+post.n <- function(y, theta, lamb.pois, n){
+  # Menghitung prior Poisson
+  pri <- dpois(n, lamb.pois)
+  
+  # Menghitung lilelihood Binomial P(Y|n, theta)
+  llh <- dbinom(y, n, theta)
+  
+  # Menghitung posterior tidak ternomalisasi
+  pri.llh <- pri * llh
+  
+  # Posterior
+  post <- pri.llh / sum(pri.llh)
+  return(post)
+}
+
+# Nilai-nilai yang mungkin untuk n
+n.val <- 0:30
+
+# Kombinasi nilai Y dan theta yang diberikan
+Y.val <- c(0, 5, 10)
+theta.val <- c(0.2, 0.5)
+
+# Menghitung dan memplot distribusi posterior untuk semua kombinasi Y dan theta
+post.plot <- function(Y.val, theta.val, n.val, lamb.pois){
+  plot.list <- list()
+  for(y in Y.val){
+    for(theta in theta.val){
+      post <- post.n(y, theta, lamb.pois, n.val)
+      df <- data.frame(n=n.val, post=post)
+      
+      #Chart
+      bar.max <- which(df$post == max(df$post))
+      chart <- ggplot(df, aes(x=n, y=post)) +
+        geom_bar(stat="identity", col=NA,
+                 fill= ifelse(df$n %in% bar.max,  "#1380A1", "#dddddd")) +
+        labs(x = "\nn", y = "Peluang Posterior", 
+             title = paste0("\nSebaran Posterior n (Y=",y, ", \u03b8=", theta, ")")) +
+        theme1.1
+      plot.list[[paste0("Y=", y, "\u03b8=", theta)]] <- chart
+    }
+  }
+  return(plot.list)
+}
+
+# Asumsikan lambda untuk distribusi Poisson adalah 5
+lamb.pois <- 5
+
+# Plot/Chart
+chart <- post.plot(Y.val, theta.val, n.val, lamb.pois)
+do.call("grid.arrange", c(chart, ncol=2))
 ```
