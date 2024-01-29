@@ -61,6 +61,8 @@ theme1.1 <- list(
 )
 ```
 
+> -   <mark style="background-color: #91CCDB">**Code/Syntax :** [File.rmd](https://github.com/Zen-Rofiqy/STA1312-PSB/blob/main/Project/Tugas%20Prak%201%20Pert%201/G1401211006_Angga-Fathan-Rofiqy_Tugas-Praktikum-1.Rmd) </mark>
+
 # No 1
 
 ![](images/clipboard-1509227410.png){width="619"}
