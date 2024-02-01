@@ -36,9 +36,9 @@ pkgdown:
 
 > **Diketahui :**
 >
-> -   Sensitivitas = 0.95 -\> $P(T|D)$
+> -   Sensitivitas = 0.95 ➡️ $\frac{TP}{TP+FN}$ ➡️ "Punya disease (D), dan test positive (T)" ➡️ $P(T|D)$
 >
-> -   Spesifisitas = 0.9 -\> $P(T^c|D^c)$
+> -   Spesifisitas = 0.9 ➡️ "Gak punya disease ($D^c$) dan test nya negative ($T^c$) ➡️ $P(T^c|D^c)$
 >
 > -   $P(D)$ = 0.01
 
@@ -55,8 +55,30 @@ $\begin{equation}\begin{aligned} P(D|T) &= \frac{0.0095} {0.0095+0.0099} \\ &= 0
 | T     | True Positive  | False Positive |
 | $T^2$ | False Positive | True Negative  |
 
-Sensitivitas = $\frac{TP}{TP+FN}$
-
-Spesifisitas = $\frac{TN}{TN+FP}$
-
 ![](images/clipboard-640443932.png)
+
+### No 2
+
+![](images/clipboard-4115582622.png){width="474"}
+
+> **Diketahui :**
+>
+> -   Sensitivitas = 0.9 ➡️ $\frac{TP}{TP+FN}$ ➡️ "Screening positif (A) dan punya kanker (B)" ➡️ $P(A|B)$
+>
+> -   Spesifisitas = 0.95 ➡️ "Screening negatif ( $A^c$) dan gak kanker ($B^c$)" ➡️ $P(A^c|B^c)$
+>
+> -   $P(B)$ = 0.001
+
+> **Poin a**
+
+$P(B|A) = \frac{P(A|B) P(B)}{P(A)}$
+
+Menggunakan kaidah peluang total :
+
+$\begin{equation}\begin{aligned} P(A) &= P(A|B) P(B) + P(A|B^c) P(B^c) \\ &= 0.9 (0.001) + 0.05 (0.999) \\ &= 0.0009 + 0. \end{aligned}\end{equation}$
+
+$\begin{equation}\begin{aligned} P(D|T) &= \frac{0.0009} {0.05085} \\ &= 0.01769 \end{aligned}\end{equation}$
+
+> **Poin b**
+
+Tidak efektif, karena nilai peluang nya kecil.
