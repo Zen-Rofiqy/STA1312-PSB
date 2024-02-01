@@ -36,13 +36,15 @@ pkgdown:
 
 > **Diketahui :**
 >
-> -   Sensitivitas = 0.95 -\> P(T\|D)
+> -   Sensitivitas = 0.95 -\> $P(T|D)$
 >
-> -   Spesifisitas = 0.9 -\> P(Tc\|Dc)
+> -   Spesifisitas = 0.9 -\> $P(T^c|D^c)$
 >
-> -   P(D) = 0.01
+> -   $P(D)$ = 0.01
 
-$P(D|T) = \frac{P(T|D) P(D)}{P(T)}$. Menggunakan kaida peluang total :
+$P(D|T) = \frac{P(T|D) P(D)}{P(T)}$
+
+Menggunakan kaidah peluang total :
 
 $\begin{equation}\begin{aligned} P(T) &= P(T|D) P(D) + P(T|D^c) P(D^c) \\ &= 0.95 (0.01) + 0.1 (0.99) \\ &= 0.0095 + 0.099 \end{aligned}\end{equation}$
 
