@@ -20,7 +20,8 @@
 		{"id":"c7395254e7626dd6","x":-200,"y":1940,"width":173,"height":88,"type":"text","text":"2a + 2b = 1  \na = 2b"},
 		{"id":"a0f4974b4141217e","x":-898,"y":1252,"width":250,"height":88,"type":"text","text":"Pilih yang posteriornya paling besar, yakni $\\pi$ = 0.6"},
 		{"id":"1c985d6749a18cb1","x":-1040,"y":1978,"width":320,"height":202,"type":"text","text":"Kalo tanpa data, bisa di duga bahwa $\\mu$ yang mendekati kebenaran adalah 1.5 atau 2. \nTapi setelah update data, yang dipilih adalah $\\mu$ = 2"},
-		{"id":"e20538db2d7cec01","x":-1040,"y":2228,"width":373,"height":93,"type":"text","text":"Inferensi itu sebenearnya memilih sesuatu. \nHipotesis itu sesuatuu yang menolak"}
+		{"id":"e20538db2d7cec01","x":-1040,"y":2228,"width":373,"height":93,"type":"text","text":"Inferensi itu sebenearnya memilih sesuatu. \nHipotesis itu sesuatuu yang menolak"},
+		{"id":"5d558a60db47faa8","x":-80,"y":2109,"width":400,"height":71,"type":"text","text":"Nilai 1 itu selalu ada di prior dan posterior"}
 	],
 	"edges":[
 		{"id":"c9fe016e585789e9","fromNode":"dd6e5d9cc494dbad","fromSide":"right","toNode":"660f8f4dfb9bfbd3","toSide":"left"},
