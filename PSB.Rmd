@@ -98,3 +98,7 @@ $P(Y_1=y_1)=\binom{n}{y_1} \pi^y_1 (1-\pi)$
 |  0.6  |  1/4  | 0.214991   | 0.053748                  | 0.467807  |
 |  0.8  |  1/4  | 0.201327   | 0.050332                  | 0.438075  |
 | Total |       |            | 0.114893                  |           |
+
+### No 14
+
+Let $n$ be the unknown number of customers that visit a store on the day of a sale. The number of customers that make a purchase is $Y|n \sim \text{Binomial}(n, \theta)$ where \\theta is the known probability of making a purchase given the customer visited the store. The prior is $n \sim \text{Poisson}(5)$. Assuming $\theta$ is known and n is the unknown parameter, plot the posterior distribution of n for all combinations of $Y \in \{0, 5, 10 \}$ and $\theta \in \{0.2, 0.5 \}$ and comment on the effect of $Y$ and $\theta$ on the posterior.
