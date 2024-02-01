@@ -19,3 +19,11 @@ output:
 pkgdown:
   as_is: true
 ---
+
+# Pertemuan 2
+
+## Responsi
+
+### No 1
+
+![](images/clipboard-1940714350.png){width="536"}
