@@ -116,3 +116,13 @@ Let $n$ be the unknown number of customers that visit a store on the day of a sa
 > -   $n|y$ ?
 
 ![](images/WhatsApp Image 2024-02-01 at 17.28.21_caea1043.jpg)
+
+### No 15
+
+Last spring your lab planted ten seedlings and two survived the winter. Let $\theta$ be the probability that a seedling survives the winter.
+
+(a) Assuming a uniform prior distribution of $\theta$, compute its posterior mean and standard deviaton.
+
+(b) Assuming the same prior as in (a), compute and compare the equal-tailed and highest density 95% posterior credible intervals.
+
+(c) If you plant another 10 seedlings next year, what is the posterior predictive probabilty that at least one will survive the winter?
