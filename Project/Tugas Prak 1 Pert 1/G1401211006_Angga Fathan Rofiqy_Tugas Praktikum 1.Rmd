@@ -65,7 +65,7 @@ theme1.1 <- list(
 
 # Tulis Tangan
 
-![](images/WhatsApp Image 2024-01-29 at 17.12.56_51a5adfb.jpg)
+![](images/WhatsApp%20Image%202024-01-29%20at%2017.12.56_51a5adfb.jpg)
 
 Maaf tulisannya jelek 🙏. Tapi tenang, dibawah di ketik dengan rapih kok 👍.
 
@@ -255,7 +255,7 @@ do.call("grid.arrange", c(chart, ncol=2))
 
 Dari chart di atas, terlihat bahwa nilai $Y$ dan $\theta$ memperngaruhi sebaran posterior, yaitu:
 
--   Ketika <mark style="background-color: #b6f2b6">nilai $Y$ **kecil**</mark>, misalkan saat $Y=0$, sebaran posterior cenderung berepusat di nilai <mark style="background-color: #b6f2b6"> $n$ yang **lebih kecil**</mark>. \
+-   Ketika <mark style="background-color: #b6f2b6">nilai $Y$ **kecil**</mark>, misalkan saat $Y=0$, sebaran posterior cenderung berepusat di nilai <mark style="background-color: #b6f2b6"> $n$ yang **lebih kecil**</mark>.\
     Hal ini menunjukkan <mark style="background-color: #b6f2b6">jika **sangat sedikit** pelanggan yang membel`i</mark>`{=html} ($Y$), kemungkinan banyaknya <mark style="background-color: #b6f2b6">pelanggan yang dateng ke toko pada hari diskon ($n$) juga **akan sediki**`t</mark>`{=html}.
 
 -   Sebaliknya, ketika <mark style="background-color: #b6f2b6">nilai $Y$ **besar**</mark>, sebaran posterior cenderung berpusat di nilai <mark style="background-color: #b6f2b6"> $n$ yang **lebih besar**</mark>. Ini berarti <mark style="background-color: #b6f2b6">jika **banyak** pelanggan yang membeli</mark> ($Y$), kemungkinan banyaknya <mark style="background-color: #b6f2b6">pelanggan yang dateng ke toko pada hari diskon ($n$) juga **akan lebih banyak**</mark>.
