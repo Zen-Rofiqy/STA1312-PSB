@@ -82,3 +82,19 @@ $\begin{equation}\begin{aligned} P(D|T) &= \frac{0.0009} {0.05085} \\ &= 0.01769
 > **Poin b**
 
 Tidak efektif, karena nilai peluang nya kecil.
+
+### No 4
+
+![](images/clipboard-2709643960.png){width="488"}
+
+$Y_1 \sim \text{Binom}(10, \pi)$, dengan $\pi = 0.2, 0.4, 0.6, 0.8$
+
+$P(Y_1=y_1)=\binom{n}{y_1} \pi^y_1 (1-\pi)$
+
+| $\pi$ | Prior | Likelihood | Prior $\times$ Likelihood | Posterior |
+|:-----:|:-----:|------------|---------------------------|-----------|
+|  0.2  |  1/4  | 0.000786   | 0.000197                  | 0.001711  |
+|  0.4  |  1/4  | 0.042467   | 0.010617                  | 0.092406  |
+|  0.6  |  1/4  | 0.214991   | 0.053748                  | 0.467807  |
+|  0.8  |  1/4  | 0.201327   | 0.050332                  | 0.438075  |
+| Total |       |            | 0.114893                  |           |
