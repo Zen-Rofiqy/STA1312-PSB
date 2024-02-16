@@ -107,7 +107,7 @@ Let $n$ be the unknown number of customers that visit a store on the day of a sa
 >
 > -   $Y \sim \text{Binomial}(n, \theta)$
 >
-> -    $n \sim \text{Poisson}(5)$
+> -   $n \sim \text{Poisson}(5)$
 >
 > -   $Y \in \{0, 5, 10 \}$
 >
@@ -115,7 +115,7 @@ Let $n$ be the unknown number of customers that visit a store on the day of a sa
 >
 > -   $n|y$ ?
 
-![](images/WhatsApp Image 2024-02-01 at 17.28.21_caea1043.jpg)
+![](images/WhatsApp%20Image%202024-02-01%20at%2017.28.21_caea1043.jpg)
 
 ### No 15
 
