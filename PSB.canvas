@@ -46,8 +46,15 @@
 		{"id":"add2aed316a7f07f","x":2682,"y":900,"width":250,"height":60,"type":"text","text":"P > P --> Terima H0"},
 		{"id":"67a2307729c90f78","x":2682,"y":1005,"width":400,"height":377,"type":"file","file":"WhatsApp Image 2024-02-22 at 14.18.03_98477087.jpg"},
 		{"id":"ee75c92a82d5fe55","x":3144,"y":1012,"width":318,"height":113,"type":"text","text":"Yang membedakan itu yang di bawahnya. Kalo yang frekuentis itu sampe atas aja"},
-		{"id":"ee00007ead16d805","x":2669,"y":1500,"width":527,"height":210,"type":"text","text":"Y= sinyal yang diterima\nX = yang dipancarkan.\nYang kita tau itu yang kita diterima. Jadi yang kita cari tau X. \nJadi gak bisa pake pengujian hipotesis biasa. Harus pake bayesian, karena Y nya terrjadi duluan. "},
-		{"id":"083b536c693465ec","x":2216,"y":1500,"width":400,"height":165,"type":"file","file":"Pasted image 20240222142208.png"}
+		{"id":"ee00007ead16d805","x":2669,"y":1500,"width":527,"height":165,"type":"text","text":"Y= sinyal yang diterima\nX = yang dipancarkan.\nYang kita tau itu yang kita diterima. Jadi yang kita cari tau X. \nJadi gak bisa pake pengujian hipotesis biasa. Harus pake bayesian, karena Y nya terrjadi duluan. "},
+		{"id":"083b536c693465ec","x":2216,"y":1500,"width":400,"height":165,"type":"file","file":"Pasted image 20240222142208.png"},
+		{"id":"aef5d4e8b3015e5f","x":2669,"y":1700,"width":347,"height":80,"type":"text","text":"Sebaran normal itu bersifat aditif"},
+		{"id":"c5ac29576101e8d2","x":2216,"y":1700,"width":400,"height":349,"type":"file","file":"WhatsApp Image 2024-02-22 at 14.26.30_e3b6a3f3.jpg"},
+		{"id":"e105ae0b2a036344","x":2669,"y":1820,"width":400,"height":305,"type":"file","file":"WhatsApp Image 2024-02-22 at 14.32.23_3e1fabdc.jpg"},
+		{"id":"5fb927a885dbc645","x":3142,"y":1855,"width":478,"height":270,"type":"text","text":"Jadi ini bisa dijalankan sampe kita terima H0\n. \nH0 diterima itu kalo Prior H0 lebih besar daripada prior H1. \n. \nKalo di bayes itu basis nya peluang, mana yang paling besar itu yang paling benar. Sedangkan kalo di frekuentis itu langsung memutuskan mana yang benar mana yang salah."},
+		{"id":"187fa8a9fd50ddf5","x":3144,"y":1754,"width":400,"height":53,"type":"file","file":"Pasted image 20240222143553.png"},
+		{"id":"272dee748e2cbda2","x":2216,"y":2180,"width":400,"height":254,"type":"file","file":"Pasted image 20240222143917.png"},
+		{"id":"cd3dc4a79ce1cb88","x":2668,"y":2203,"width":312,"height":157,"type":"text","text":"Contohnya gini..\nMisal di regresi, beta1 tidak mencakup 0 di dalamnya, hanya ada 1,2,3,4,5. \nMaka tolak H0"}
 	],
 	"edges":[
 		{"id":"c9fe016e585789e9","fromNode":"dd6e5d9cc494dbad","fromSide":"right","toNode":"660f8f4dfb9bfbd3","toSide":"left"},
@@ -74,6 +81,10 @@
 		{"id":"cae5d6e70d0f934a","fromNode":"bb2558a9d0784993","fromSide":"right","toNode":"299a87a9bd52c2ee","toSide":"left"},
 		{"id":"7042451ba8cc6d3a","fromNode":"bb2558a9d0784993","fromSide":"bottom","toNode":"137b95846368c284","toSide":"top","label":"Sama dengan :"},
 		{"id":"aa36383fc30a2d94","fromNode":"137b95846368c284","fromSide":"right","toNode":"add2aed316a7f07f","toSide":"left"},
-		{"id":"bac6f16e9b7fccca","fromNode":"67a2307729c90f78","fromSide":"right","toNode":"ee75c92a82d5fe55","toSide":"left"}
+		{"id":"bac6f16e9b7fccca","fromNode":"67a2307729c90f78","fromSide":"right","toNode":"ee75c92a82d5fe55","toSide":"left"},
+		{"id":"186e875e2bd5a0d7","fromNode":"083b536c693465ec","fromSide":"right","toNode":"ee00007ead16d805","toSide":"left"},
+		{"id":"4f1740d906803070","fromNode":"e105ae0b2a036344","fromSide":"right","toNode":"5fb927a885dbc645","toSide":"left"},
+		{"id":"3927bac18382576c","fromNode":"187fa8a9fd50ddf5","fromSide":"bottom","toNode":"5fb927a885dbc645","toSide":"top"},
+		{"id":"52980a860c7a147c","fromNode":"272dee748e2cbda2","fromSide":"right","toNode":"cd3dc4a79ce1cb88","toSide":"left"}
 	]
 }
